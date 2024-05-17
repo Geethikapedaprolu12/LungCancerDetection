@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lung Cancer Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"] {
+            width: calc(100% - 20px); /* Adjusted width */
+            padding: 8px;
+            margin-bottom: 16px; /* Reduced margin */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px; /* Reduced font size */
+            color: #333; /* Text color */
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        h2 {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .result {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lung Cancer Detection Form</h1>
+    <form action="/predict" method="post">
+        <label for="gender">Gender (0: Female, 1: Male):</label>
+        <input type="text" id="gender" name="gender" required><br>
+
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age" required><br>
+
+        <label for="smoking">Smoking (0: No, 1: Yes):</label>
+        <input type="text" id="smoking" name="smoking" required><br>
+
+        <label for="yellow_fingers">Yellow Fingers (0: No, 1: Yes):</label>
+        <input type="text" id="yellow_fingers" name="yellow_fingers" required><br>
+
+        <label for="anxiety">Anxiety (0: No, 1: Yes):</label>
+        <input type="text" id="anxiety" name="anxiety" required><br>
+
+        <label for="peer_pressure">Peer Pressure (0: No, 1: Yes):</label>
+        <input type="text" id="peer_pressure" name="peer_pressure" required><br>
+
+        <label for="chronic_disease">Chronic Disease (0: No, 1: Yes):</label>
+        <input type="text" id="chronic_disease" name="chronic_disease" required><br>
+
+        <label for="fatigue">Fatigue (0: No, 1: Yes):</label>
+        <input type="text" id="fatigue" name="fatigue" required><br>
+
+        <label for="allergy">Allergy (0: No, 1: Yes):</label>
+        <input type="text" id="allergy" name="allergy" required><br>
+
+        <label for="wheezing">Wheezing (0: No, 1: Yes):</label>
+        <input type="text" id="wheezing" name="wheezing" required><br>
+
+        <label for="alcohol_consuming">Alcohol Consuming (0: No, 1: Yes):</label>
+        <input type="text" id="alcohol_consuming" name="alcohol_consuming" required><br>
+
+        <label for="coughing">Coughing (0: No, 1: Yes):</label>
+        <input type="text" id="coughing" name="coughing" required><br>
+
+        <label for="shortness_of_breath">Shortness of Breath (0: No, 1: Yes):</label>
+        <input type="text" id="shortness_of_breath" name="shortness_of_breath" required><br>
+
+        <label for="swallowing_difficulty">Swallowing Difficulty (0: No, 1: Yes):</label>
+        <input type="text" id="swallowing_difficulty" name="swallowing_difficulty" required><br>
+
+        <label for="chest_pain">Chest Pain (0: No, 1: Yes):</label>
+        <input type="text" id="chest_pain" name="chest_pain" required><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction is defined %}
+    <h2>
+        {% if prediction == 1 %}
+            Person has lung cancer.
+        {% else %}
+            Person does not have lung cancer.
+        {% endif %}
+    </h2>
+    {% endif %}
+</body>
+</html>
